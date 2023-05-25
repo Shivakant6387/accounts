@@ -31,4 +31,8 @@ public class AccountsController {
     public ResponseEntity<Optional<Accounts>> getSingleAccountsId(@PathVariable int id) throws UserNotFoundException {
       return ResponseEntity.ok(accountsService.findByAccountId(id));
     }
+    @PutMapping("/update")
+    public ResponseEntity<Accounts>update(@RequestBody Accounts accounts){
+        return ResponseEntity.ok(accountsService.updateAccount(accounts));
+    }
 }
