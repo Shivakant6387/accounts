@@ -41,5 +41,14 @@ public class AccountsService {
             throw new UserNotFoundException("Account not found with ID: " + updatedAccount.getId());
         }
     }
+    public void deleteAccount(Accounts accounts){
+        Optional<Accounts>updateAccounts=accountsRepository.findById(accounts.getId());
+        if (updateAccounts.isPresent()) {
+            accountsRepository.delete(accounts);
+        }
+        else {
+            throw new UserNotFoundException("Account id is not present"+accounts.getId());
+        }
+    }
 
 }

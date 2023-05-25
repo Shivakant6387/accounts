@@ -35,4 +35,9 @@ public class AccountsController {
     public ResponseEntity<Accounts>update(@RequestBody Accounts accounts){
         return ResponseEntity.ok(accountsService.updateAccount(accounts));
     }
+    @DeleteMapping("/deleteId/{id}")
+    public ResponseEntity<String>deleteAccountId(Accounts accounts){
+        accountsService.deleteAccount(accounts);
+        return ResponseEntity.ok("Id Successfully Deleted:"+accounts.getId());
+    }
 }
