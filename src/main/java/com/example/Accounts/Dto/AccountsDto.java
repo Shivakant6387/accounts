@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountsDto {
-    private String firstName;
-    private String lastName;
-    private String branchName;
-    private BigInteger accountNumber;
-    private int phoneNumber;
-    private String aadharNumber;
+    private LocalDateTime localDateTime;
+    private String message;
+    private String details;
 }

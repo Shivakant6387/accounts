@@ -1,11 +1,13 @@
 package com.example.Accounts.service;
 
+import com.example.Accounts.Exception.UserNotFoundException;
 import com.example.Accounts.model.Accounts;
 import com.example.Accounts.repository.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountsService {
@@ -13,5 +15,14 @@ public class AccountsService {
     private AccountsRepository accountsRepository;
     public List<Accounts> findAllAccounts(){
         return accountsRepository.findAll();
+    }
+    public Accounts createNewAccount(Accounts accounts){
+        return accountsRepository.save(accounts);
+    }
+    public Optional<Accounts> findByAccountId(int id) throws UserNotFoundException{
+        Optional<Accounts> accounts=accountsRepository.findById(id);
+       if (accounts.isEmpty())
+           throw new UserNotFoundException("Accounts not found exception");
+       return accounts;
     }
 }
