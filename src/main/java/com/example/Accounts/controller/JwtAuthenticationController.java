@@ -1,12 +1,7 @@
 package com.example.Accounts.controller;
-
-import java.util.Objects;
-
 import com.example.Accounts.config.JwtTokenUtil;
 import com.example.Accounts.model.JwtRequest;
 import com.example.Accounts.model.JwtResponse;
-
-import com.example.Accounts.model.UserDTO;
 import com.example.Accounts.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,11 +44,6 @@ public class JwtAuthenticationController {
 
         return ResponseEntity.ok(new JwtResponse(token));
     }
-//    @RequestMapping(value = "/register",method = RequestMethod.POST)
-//    public ResponseEntity<?>saveUser(@RequestBody UserDTO userDTO){
-//        return ResponseEntity.ok(userDetailsService.save(userDTO));
-//    }
-
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

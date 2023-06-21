@@ -1,4 +1,6 @@
 package com.example.Accounts.service;
+import com.example.Accounts.repository.DAOUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,6 +11,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
+
+    private DAOUserRepository daoUserRepository;
+    private PasswordEncoder bcryptEncoder;
+
+    JwtUserDetailsService(DAOUserRepository daoUserRepository,PasswordEncoder bcryptEncoder){
+        this.daoUserRepository=daoUserRepository;
+        this.bcryptEncoder=bcryptEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
